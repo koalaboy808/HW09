@@ -45,6 +45,41 @@ import sys
 # and builds and returns a word/count dict for it.
 # Then print_words() and print_top() can just call the utility function.
 
+def count_words(filename):
+  dict_list = {}
+  with open(filename) as f_in:
+    # convert to lower case and split on spaces
+    f_in = f_in.read().lower().split()
+
+    for word in f_in:
+      dict_list[word] = dict_list.get(word, 0) + 1
+    
+    tuple_list = []
+    for key, value in dict_list.items():
+        tuple_list.append((value, key))
+
+    # order tupe_list
+    tuple_list.sort(reverse=True)
+    return tuple_list
+
+def print_words(filename):
+  tuple_list = count_words(filename)
+    # print in order of most frequent to leasy frequent
+  for freq, word in tuple_list:
+    print freq, word
+
+#print_words("alice.txt")
+
+def print_top(filename):
+  tuple_list = count_words(filename)
+  tuple_list = tuple_list[0:20]
+  for freq, word in tuple_list:
+      print freq, word
+
+#print_top("alice.txt")
+
+
+
 ###
 
 # This basic command line argument parsing code is provided and
