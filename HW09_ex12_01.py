@@ -13,6 +13,16 @@
 # Imports
 
 # Body
+def sumall(*t):
+	if len(t)==1:
+		return t[0]
+	else:
+		temp = t[0]
+		for count in range(len(t)-1):
+			#temp = sum(t[count] + temp)
+			to_add = count + 1
+			temp = (t[to_add] + temp)
+		return temp
 
 
 
